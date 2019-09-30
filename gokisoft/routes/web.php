@@ -9,41 +9,38 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
- */
+*/
 
 Route::get('/', function () {
-		return view('welcome');
-	});
+    return view('welcome');
+});
+
+Route::get('/danh-sach-san-pham',function (){
+    return view('product');
+});
+
+Route::get('/danh-sach-san-pham-method-2',function (){
+    return view('list');
+});
+//url->view
+
+Route::post('product/add',[
+    'as'=> 'add',
+    'uses'=> 'ProductController@add'
+]);
+
+Route::get('product/view',function(){
+    return view('product.add');
+})->name('view');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/test', function () {
-		echo 'Hello World';
-	});
+Auth::routes();
 
-Route::get('/goodbye', function () {
-		echo 'Goodbye!!!';
-	});
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/abc', function () {
-		return 'Hello ABC!!!';
-	});
+Auth::routes();
 
-Route::get('/login', function () {
-		return view('dang-nhap');
-	});
-
-Route::get('/danh-sach-sv', function () {
-		return view('list');
-	});
-
-Route::get('/danh-sach', [
-		'as'   => 'danh-sach-sinh-vien',
-		'uses' => 'ListController@showList'
-	]);
-
-Route::get('/{year}/{month}/{day}/{message}', function ($year, $month, $day, $message) {
-		return $message.'-'.$day.'/'.$month.'/'.$year;
-	});
+Route::get('/home', 'HomeController@index')->name('home');
