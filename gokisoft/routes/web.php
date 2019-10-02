@@ -33,6 +33,21 @@ Route::get('product/view',function(){
     return view('product.add');
 })->name('view');
 
+Route::get('hotel/view',[
+    'as'=> 'showAll',
+    'uses'=> 'HotelController@showAll'
+]);
+
+Route::get('hotel/detail',[
+    'as'=> 'showDetail',
+    'uses'=> 'HotelController@showDetail'
+]);
+
+Route::get('/san-pham',[
+    'as' => 'san-pham',
+    'uses' => 'sanPham@show'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
